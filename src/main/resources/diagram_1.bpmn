@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0ft0exc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.0.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.17.0">
+  <bpmn:process id="processo-mercadoria" name="processo-mercadoria" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_121v073</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_121v073" sourceRef="StartEvent_1" targetRef="Activity_1ea9sa1" />
+    <bpmn:task id="Activity_1o612gf" name="Cadastrar Mercadoria">
+      <bpmn:incoming>Flow_15tr8xq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1c28akr</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_04msi5p" name="Notificar Recebimento">
+      <bpmn:incoming>Flow_1c28akr</bpmn:incoming>
+      <bpmn:outgoing>Flow_06muljp</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_15tr8xq" sourceRef="Activity_1ea9sa1" targetRef="Activity_1o612gf" />
+    <bpmn:sequenceFlow id="Flow_1c28akr" sourceRef="Activity_1o612gf" targetRef="Activity_04msi5p" />
+    <bpmn:endEvent id="Event_1qutwef">
+      <bpmn:incoming>Flow_06muljp</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_06muljp" sourceRef="Activity_04msi5p" targetRef="Event_1qutwef" />
+    <bpmn:serviceTask id="Activity_1ea9sa1" name="ReceberMercadoria" camunda:delegateExpression="${receberMercadoria}">
+      <bpmn:incoming>Flow_121v073</bpmn:incoming>
+      <bpmn:outgoing>Flow_15tr8xq</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="processo-mercadoria">
+      <bpmndi:BPMNEdge id="Flow_06muljp_di" bpmnElement="Flow_06muljp">
+        <di:waypoint x="600" y="120" />
+        <di:waypoint x="652" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1c28akr_di" bpmnElement="Flow_1c28akr">
+        <di:waypoint x="460" y="120" />
+        <di:waypoint x="500" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15tr8xq_di" bpmnElement="Flow_15tr8xq">
+        <di:waypoint x="320" y="120" />
+        <di:waypoint x="360" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_121v073_di" bpmnElement="Flow_121v073">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="220" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0prugdy" bpmnElement="Activity_1o612gf">
+        <dc:Bounds x="360" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0j8a0x7" bpmnElement="Activity_04msi5p">
+        <dc:Bounds x="500" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qutwef_di" bpmnElement="Event_1qutwef">
+        <dc:Bounds x="652" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0m2l8id_di" bpmnElement="Activity_1ea9sa1">
+        <dc:Bounds x="220" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
